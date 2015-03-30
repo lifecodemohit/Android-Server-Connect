@@ -25,12 +25,18 @@ class Task extends AsyncTask<String,String,String> {
 
         JSONObject jsonobj = new JSONObject();
         try {
-            String bus_no = "20";
-            String latitude = "111111.5";
-            String longitude = "-97.499978";
-            jsonobj.put("bus_no",bus_no);
-            jsonobj.put("latitude",latitude);
-            jsonobj.put("longitude",longitude);
+            String data = params[2];        // Please check if the index is 1 or 2.
+
+//          Input format is as follows
+//          <bus_no>;<latitude>;<longitude>  ("<" ">" for clarity)
+
+            String dtemp[] = data.split(";");
+            jsonobj.put("bus_no",dtemp[0]);
+            jsonobj.put("latitude",dtemp[1]);
+            jsonobj.put("longitude",dtemp[2]);
+
+            /*for (int i=0;i<3;i++)
+                System.out.print(dtemp[i]);*/
         } catch (JSONException e) {
             e.printStackTrace();
         }
