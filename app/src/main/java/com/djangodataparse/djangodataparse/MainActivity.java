@@ -41,7 +41,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void sendData(View view) {
-
+        final EditText inputData = (EditText) findViewById(R.id.editText);
+        String data = inputData.getText().toString();
         new Task().execute("http://192.168.53.36:8080/");
     }
 }
